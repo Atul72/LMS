@@ -4,8 +4,10 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { LayoutDashboard } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
+
 import { TitleForm } from "./_components/title-form";
 import { DescriptionForm } from "./_components/description-form";
+import { ImageForm } from "./_components/image-form";
 
 export default async function CourseIdPage({
   params,
@@ -58,6 +60,7 @@ export default async function CourseIdPage({
           </div>
           <TitleForm initialData={course} courseId={course.id} />
           <DescriptionForm initialData={course} courseId={course.id} />
+          <ImageForm initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>
