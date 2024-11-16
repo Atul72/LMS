@@ -97,7 +97,9 @@ export default async function CourseIdPage({
               <IconBadge icon={ListChecks} />
               <h2 className="text-xl">Course chapters</h2>
             </div>
-            <div>TODO: Chapters</div>
+            <div>
+              <DescriptionForm initialData={course} courseId={course.id} />
+            </div>
           </div>
           <div>
             <div className="flex items-center gap-x-2">
