@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { ChapterTitleForm } from "./_components/chapter-title-form";
 import { ChapterDescriptionForm } from "./_components/chapter-description-form";
 import { ChapterAccessForm } from "./_components/chapter-access-form";
+import { ChapterVideoForm } from "./_components/chapter-video-form";
 
 export default async function ChapterIdPage({
   params,
@@ -23,6 +24,9 @@ export default async function ChapterIdPage({
     where: {
       id: params.chapterId,
       courseId: params.courseId,
+    },
+    include: {
+      muxData: true,
     },
   });
 
@@ -91,6 +95,11 @@ export default async function ChapterIdPage({
             <IconBadge icon={Video} />
             <h2 className="text-xl">Add a video</h2>
           </div>
+          <ChapterVideoForm
+            initialData={chapter}
+            courseId={params.courseId}
+            chapterId={params.chapterId}
+          />
         </div>
       </div>
     </div>
