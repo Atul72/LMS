@@ -7,6 +7,7 @@ import { Trash } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useConfettiStore } from "@/hooks/use-confetti-store";
 
 interface CourseActionsProps {
   disabled: boolean;
@@ -19,6 +20,7 @@ export const CourseActions = ({
   courseId,
   isPublished,
 }: CourseActionsProps) => {
+  const confetti = useConfettiStore();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -32,6 +34,7 @@ export const CourseActions = ({
       } else {
         await axios.patch(`/api/courses/${courseId}/publish`);
         toast.success("Course published");
+        confetti.onOpen();
       }
       router.refresh();
     } catch (error) {
