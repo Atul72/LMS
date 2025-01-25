@@ -33,7 +33,6 @@ export function CourseSidebarItem({
     <button
       type="button"
       onClick={onClick}
-      disabled={isLocked}
       className={cn(
         "flex items-center gap-x-2 text-slate-500 text-sm font-[500] pl-6 transition-all hover:text-slate-600 hover:bg-slate-300/20",
         isActive &&
